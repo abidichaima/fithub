@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ParticipationSeance{% endblock %}
+
+{% block body %}
+    <h1>Create new ParticipationSeance</h1>
+
+    {{ include('participation_seance/_form.html.twig') }}
+
+    <a href="{{ path('app_participation_seance_index') }}">back to list</a>
+{% endblock %}

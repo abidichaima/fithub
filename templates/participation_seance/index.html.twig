@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ParticipationSeance index{% endblock %}
+
+{% block body %}
+    <h1>ParticipationSeance index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>TypeSport</th>
+                <th>DateParticipation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for participation_seance in participation_seances %}
+            <tr>
+                <td>{{ participation_seance.id }}</td>
+                <td>{{ participation_seance.typeSport }}</td>
+                <td>{{ participation_seance.dateParticipation ? participation_seance.dateParticipation|date('Y-m-d') : '' }}</td>
+
+                <td>
+                    <a href="{{ path('app_participation_seance_show', {'id': participation_seance.id}) }}">show</a>
+                    <a href="{{ path('app_participation_seance_edit', {'id': participation_seance.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_participation_seance_new') }}">Create new</a>
+{% endblock %}

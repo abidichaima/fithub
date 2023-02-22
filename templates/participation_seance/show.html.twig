@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ParticipationSeance{% endblock %}
+
+{% block body %}
+    <h1>ParticipationSeance</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ participation_seance.id }}</td>
+            </tr>
+            <tr>
+                <th>TypeSport</th>
+                <td>{{ participation_seance.typeSport }}</td>
+            </tr>
+            <tr>
+                <th>DateParticipation</th>
+                <td>{{ participation_seance.dateParticipation ? participation_seance.dateParticipation|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Participant</th>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_participation_seance_index') }}">back to list</a>
+
+    <a href="{{ path('app_participation_seance_edit', {'id': participation_seance.id}) }}">edit</a>
+
+    {{ include('participation_seance/_delete_form.html.twig') }}
+{% endblock %}

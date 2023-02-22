@@ -1,0 +1,234 @@
+
+{#<!DOCTYPE html>
+
+<title>Seance</title>
+
+{% block body %}
+    <h1>Seance</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ seance.id }}</td>
+            </tr>
+            <tr>
+                <th>TitreSeance</th>
+                <td>{{ seance.titreSeance }}</td>
+            </tr>
+            <tr>
+                <th>DescriptionSeance</th>
+                <td>{{ seance.descriptionSeance }}</td>
+            </tr>
+            <tr>
+                <th>NbParticipantSeance</th>
+                <td>{{ seance.nbParticipantSeance }}</td>
+            </tr>
+            <tr>
+                <th>DateDebutSeance</th>
+                <td>{{ seance.dateDebutSeance ? seance.dateDebutSeance|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateFinSeance</th>
+                <td>{{ seance.dateFinSeance ? seance.dateFinSeance|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_seance_index') }}">back to list</a>
+
+    <a href="{{ path('app_seance_edit', {'id': seance.id}) }}">edit</a>
+
+
+    {{ include('seance/_delete_form.html.twig') }}
+{% endblock %}
+#}
+{% extends 'baseback.html.twig' %}
+{% block html %}
+<!DOCTYPE html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+
+        /* Style the outer container */
+        .testbox {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Style the inner container */
+        .testbox > div {
+            padding: 20px;
+            border-radius: 6px;
+            background: #fff;
+            box-shadow: 0 0 8px #006622;
+        }
+
+        /* Style the banner */
+        .banner h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: bold;
+            color: #006622;
+            text-align: center;
+        }
+
+        /* Style the table */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #006622;
+        }
+
+        /* Style the table headings */
+        .table th {
+            background-color: #006622;
+            color: #fff;
+            font-weight: bold;
+            text-align: left;
+            padding: 10px;
+        }
+
+        /* Style the table data */
+        .table td {
+            border: 1px solid #4b49ab;
+            padding: 10px;
+        }
+
+        /* Style the delete and edit buttons */
+        .btn {
+            background-color: #4b49ab;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        /* Style the back to list button */
+        .btn-back {
+            background-color: #fff;
+            color: #4b49ab;
+            border: 2px solid #4b49ab;
+            padding: 10px 20px;
+            border-radius: 6px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        /* Style the legend */
+        legend {
+            font-weight: bold;
+            color: #006622;
+            font-size: 20px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #4b49ab;
+            border-radius: 6px;
+        }
+
+        /* Style the columns */
+        .columns {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .columns > * {
+            flex: 1 1 50%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        /* Style the title */
+        .columns h1 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4b49ab;
+            margin: 0;
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+{% endblock %}
+{% block body %}
+<body>
+<div class="testbox">
+    <div style=" width: 100%;
+            padding: 20px;
+            border-radius: 6px;
+            background: #fff;
+            box-shadow: 0 0 8px #4b49ab;">
+
+        <div class="banner">
+            <h1>
+        </div>
+        <br/>
+        <fieldset>
+            <legend>Seances</legend>
+            <div class="colums">
+                <h1>Seances</h1>
+
+                <table class="table" border="5">
+                    <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ seance.id }}</td>
+
+
+                    </tr>
+
+                    <tr>
+                        <th>Titre de la séance</th>-
+                        <td>{{ seance.titreSeance}}</td>
+                    </tr>
+                    <tr>
+                        <th>Description de la séance</th>
+                        <td>{{ seance.descriptionSeance}}</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre des participants</th>
+                        <td>{{ seance.nbParticipantSeance}}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Date_Debut</th>
+                        <td>{{ seance.dateDebutSeance ? seance.dateDebutSeance|date('Y-m-d') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date_Fin</th>
+                        <td>{{ seance.dateFinSeance ? seance.dateFinSeance|date('Y-m-d') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom et Prenom du coach</th>
+                        <td>{{ seance.coach }}</td>
+                    </tr>
+
+                    <tr> <th>Delete</th>
+                        <td>
+                            {{ include('seance/_delete_form.html.twig') }}
+                            <a href="{{ path('app_seance_edit', {'id': seance.id}) }}"><button class="btn">Edit</button></a>
+                        </td>
+
+                    </tbody>
+                </table>
+
+                <a href="{{ path('app_seance_index') }}"><button class="btn">Back to list</button></a>
+
+            </div>
+        </fieldset>
+    </div>
+
+
+
+</div>
+</body>
+{% endblock %}
